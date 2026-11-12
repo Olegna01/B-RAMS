@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-RAMS | Bio-Robotics & Advanced Medical Systems - PUPR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        section {
+            scroll-margin-top: 80px;
+        }
+        /* Glassmorphism styling */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        /* Floating gradient animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-gray-900 text-slate-800 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Hamburguer Menu -->
+                <div class="flex items-center space-x-4">
+                    <button id="menu-btn" class="text-slate-700 dark:text-gray-300 hover:text-blue-600 focus:outline-none p-2 rounded-lg bg-slate-100 dark:bg-gray-800 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>    
+
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-2">
+                    <span class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500 dark:from-blue-400 dark:to-indigo-300">
+                        <img src="./fotos/logo.png" alt="B-RAMS" class="w-32 h-auto mx-auto object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer">
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium">
+                    <a href="miembros.html#directiva" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Directiva</a>
+                    <a href="miembros.html#grupos" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Grupos</a>
+                    <a href="miembros.html#miembrosTodos" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Todos los miembros</a>
+                </nav>
+
+                <!-- Right Action Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggle" aria-label="Toggle theme" class="p-2.5 rounded-full bg-slate-200/60 dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-slate-300 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-amber-400"></i>
+                    </button>
+                    <a href="index.html#admision" class="px-5 py-2.5 rounded-xl font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/25 transition-all hover:scale-[1.02]">
+                        Unete
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <button id="themeToggleMobile" aria-label="Toggle theme" class="p-2 rounded-lg bg-slate-200/60 dark:bg-gray-800 text-slate-700 dark:text-gray-300">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-amber-400"></i>
+                    </button>
+                    <button id="mobileMenuBtn" aria-label="Open mobile menu" class="p-2 rounded-lg text-slate-700 dark:text-gray-300 focus:outline-none">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200/50 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg">
+            <div class="px-4 pt-3 pb-6 space-y-3 font-medium">
+                <a href="miembros.html#directiva" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800">Directiva</a>
+                <a href="miembros.html#grupos" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800">Grupos</a>
+                <a href="miembros.html#miembrosTodos" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800">Todos los miembros</a>
+                <a href="index.html#admision" class="mobile-nav-link block w-full text-center mt-2 px-4 py-2.5 rounded-xl font-semibold bg-blue-600 text-white shadow-md">Unete</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Backdrop overlay -->
+    <div id="sideMenuBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <!-- Side Panel Drawer -->
+    <aside id="menudropdown" class="fixed top-0 left-0 bottom-0 w-80 max-w-full bg-white dark:bg-gray-900 border-r border-slate-200 dark:border-gray-800 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <!-- Sidebar Header / Close Button -->
+        <div class="flex items-center justify-between p-3 border-b border-slate-100 dark:border-gray-800">
+            <div>
+                <img src="./fotos/logo.png" alt="B-RAMS" class="w-32 h-auto mx-auto object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <button id="closeSideMenu" aria-label="Close menu" class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
+                <i class="fas fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Sidebar Links -->
+        <div class="p-6 space-y-1 flex-1 overflow-y-auto">
+            <a href="index.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Home</a>
+            <a href="miembros.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Conoce los Miembros</a>
+            <a href="documentacion.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Documentación y Guías</a>
+            <a href="reglamento.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Reglamento</a>
+        </div>
+    </aside>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+    <!-- Directiva Section -->
+    <section id="directiva" class="relative pt-32 pb-20 md:pt-44 md:pb-32 bg-slate-100/60 dark:bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-s font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Directiva</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-12">2026-2027</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Presidente</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Angelo Resto Ortiz</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Vice-Presidente</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Rubén Montañez Vázquez</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Tesorero</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Dwight L. Frias Martinez</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Secretario</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">José Rivera Cintrón</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Oficial de Relaciones Públicas</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Brianna M. Cruz-Rosa</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Mentor</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">*</p>
+                </div>                
+            </div>
+    </section>
+
+    <!-- Grupos Section -->
+    <section id="grupos" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-s font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Grupos</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-12">Diferentes grupos dentro de la organizacion</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Manos Exoesqueleto</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Angelo Resto Ortiz</p>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">José Rivera Cintrón</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Piernas Exoesqueleto</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Rubén Montañez Vázquez</p>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Brianna M. Cruz-Rosa</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Espinal Dorsal Exoesqueleto</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Dwight L. Frias Martinez</p>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Angelo Resto Ortiz</p>
+                </div>
+    </section>
+
+    <!-- Todos los miembros Section -->
+    <section id="miembrosTodos" class="py-20 bg-slate-100/60 dark:bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-s font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Todo los miembros</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-12">Miembros por Año</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">2027</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Angelo Resto Ortiz</p>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">José Rivera Cintrón</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">2027</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Angelo Resto Ortiz</p>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">José Rivera Cintrón</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">2027</h3>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">Angelo Resto Ortiz</p>
+                    <p class="text-slate-600 dark:text-gray-400 text-md leading-relaxed">José Rivera Cintrón</p>
+                </div>
+            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-4">
+                    <img src="./fotos/logo.png" alt="B-RAMS" class="w-32 h-auto object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="miembros.html" class="hover:text-white transition-colors">Conoce los Miembros</a></li>
+                        <li><a href="documentacion.html" class="hover:text-white transition-colors">Documentación y Guías</a></li>
+                        <li><a href="reglamento.html" class="hover:text-white transition-colors">Reglamentos</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Proyectos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html?filter=todo#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="todo">Todos</a></li>
+                        <li><a href="index.html?filter=actividad#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="actividad">Actividades</a></li>
+                        <li><a href="index.html?filter=practica#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="practica">Practicas</a></li>
+                        <li><a href="index.html?filter=competencia#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="competencia">Competencias</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4 text-lg">
+                        <a href="https://www.instagram.com/" aria-label="Instagram" class="w-10 h-10 rounded-lg bg-gray-800 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 hover:text-white flex items-center justify-center transition-all"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/" aria-label="LinkedIn" class="w-10 h-10 rounded-lg bg-gray-800 hover:bg-blue-700 hover:text-white flex items-center justify-center transition-all"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                <p>&copy; 2026 Bio-Robotics & Advanced Medical Systems. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Theme toggler
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+        
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+        if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        document.addEventListener('click', (event) => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');    
+        const isClickInside = mobileMenu.contains(event.target) || mobileMenuBtn.contains(event.target);
+
+        if (isMenuOpen && !isClickInside) {
+            mobileMenu.classList.add('hidden');
+                }
+            });
+        document.addEventListener('scroll', (event) => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');    
+        const isClickInside = mobileMenu.contains(event.target) || mobileMenuBtn.contains(event.target);
+
+        if (isMenuOpen && !isClickInside) {
+            mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+
+
+        // --- Footer a Galeria Filtering ---
+        document.querySelectorAll('.footer-filter-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+             const filterValue = link.getAttribute('data-filter');
+        
+            const targetFilterBtn = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
+        
+            if (targetFilterBtn) {
+                targetFilterBtn.click();
+        }
+    });
+}); 
+
+        //Menu Dropdown
+        const menuBtn = document.getElementById('menu-btn');
+        const closeSideMenu = document.getElementById('closeSideMenu');
+        const sideDrawer = document.getElementById('menudropdown');
+        const sideMenuBackdrop = document.getElementById('sideMenuBackdrop');
+        const sideLinks = document.querySelectorAll('#menudropdown a');
+
+        function openSideMenu() {
+            // Remove the hidden class in case it was there
+            sideDrawer.classList.remove('hidden');
+            // Slide panel in from left
+            sideDrawer.classList.remove('-translate-x-full');
+            // Fade in blur backdrop
+            sideMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeSideMenuDrawer() {
+            // Slide panel back out to the left
+            sideDrawer.classList.add('-translate-x-full');
+            // Fade out blur backdrop
+            sideMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        if (menuBtn) menuBtn.addEventListener('click', openSideMenu);
+        if (closeSideMenu) closeSideMenu.addEventListener('click', closeSideMenuDrawer);
+        if (sideMenuBackdrop) sideMenuBackdrop.addEventListener('click', closeSideMenuDrawer);
+
+        sideLinks.forEach(link => {
+            link.addEventListener('click', closeSideMenuDrawer);
+        });
+
+        // Image Lightbox Modal Functions
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -81,6 +81,16 @@
     <header class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
+
+                <!-- Hamburguer Menu -->
+                <div class="flex items-center space-x-4">
+                    <button id="menu-btn" class="text-slate-700 dark:text-gray-300 hover:text-blue-600 focus:outline-none p-2 rounded-lg bg-slate-100 dark:bg-gray-800 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>    
+
                 <!-- Logo -->
                 <a href="#home" class="flex items-center space-x-2">
                     <span class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500 dark:from-blue-400 dark:to-indigo-300">
@@ -116,7 +126,7 @@
                         <i class="fas fa-sun hidden dark:block text-amber-400"></i>
                     </button>
                     <button id="mobileMenuBtn" aria-label="Open mobile menu" class="p-2 rounded-lg text-slate-700 dark:text-gray-300 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </div>
@@ -135,6 +145,33 @@
         </div>
     </header>
 
+    <!-- Backdrop overlay -->
+    <div id="sideMenuBackdrop" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <!-- Side Panel Drawer -->
+    <aside id="menudropdown" class="fixed top-0 left-0 bottom-0 w-80 max-w-full bg-white dark:bg-gray-900 border-r border-slate-200 dark:border-gray-800 shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <!-- Sidebar Header / Close Button -->
+        <div class="flex items-center justify-between p-3 border-b border-slate-100 dark:border-gray-800">
+            <div>
+                <img src="./fotos/logo.png" alt="B-RAMS" class="w-32 h-auto mx-auto object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <button id="closeSideMenu" aria-label="Close menu" class="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
+                <i class="fas fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Sidebar Links -->
+        <div class="p-6 space-y-1 flex-1 overflow-y-auto">
+            <a href="index.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Home</a>
+            <a href="miembros.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Conoce los Miembros</a>
+            <a href="documentacion.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Documentación y Guías</a>
+            <a href="reglamento.html" class="side-link block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 transition-colors">Reglamento</a>
+        </div>
+    </aside>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
     <!-- Home Section -->
     <section id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
@@ -147,7 +184,7 @@
                         PUPR Student Chapter
                     </span>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                        <span class="text-gray-600">B</span>io<br><span class="text-gray-600">-<br></span><span class="text-gray-600">R</span>obotics & <span class="text-gray-600">A</span>dvanced <br><span class="text-gray-600">M</span>edical <br><span class="text-gray-600">S</span>ystems
+                        <span class="text-gray-600">B</span>io<br><span class="text-gray-600">-<br></span><span class="text-gray-600">R</span>obotics & <br><span class="text-gray-600">A</span>dvanced <br><span class="text-gray-600">M</span>edical <br><span class="text-gray-600">S</span>ystems
                     </h1>
                     <p class="text-lg text-slate-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0">
                         Capítulo estudiantil oficial de la Universidad Politécnica de Puerto Rico dedicado a la investigación, desarrollo y fabricación de dispositivos biomédicos y sistemas de exoesqueletos.
@@ -184,7 +221,7 @@
                 <div class="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-slate-200/80 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                     
                     <div class="w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-microscope"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Desarrollo Tecnológico</h3>
                     <p class="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">
@@ -264,6 +301,14 @@
             </div>
         </div>
     </section>
+    
+    <!-- Image Lightbox Modal Popup Container -->
+        <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 cursor-pointer" onclick="closeModal()">
+            <div class="relative max-w-4xl max-h-[90vh]">
+                <span class="absolute -top-10 right-0 text-white text-3xl font-bold cursor-pointer hover:text-gray-300">×</span>
+                <img id="modalImage" src="" alt="Enlarged View" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+            </div>
+        </div>
 
     <!-- Sobre Nosotros Section -->
     <section id="stats" class="py-16 bg-blue-600 text-white relative overflow-hidden">
@@ -304,24 +349,24 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-slate-200/80 dark:border-gray-700 shadow-xl">
-                    <form id="formularioAdmision" class="space-y-6">
+                    <form id="formularioAdmision" action="https://formspree.io/f/mjyyejoe" method="POST" class="space-y-6">
                         <div class="grid sm:grid-cols-2 gap-6">
                             <div>
                                 <label for="nombre" class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Nombre Completo</label>
-                                <input type="text" id="nombre" required placeholder="Juan Del Pueblo" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
+                                <input type="text" id="nombre" name="Nombre" required placeholder="Juan Del Pueblo" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
                             </div>
                             <div>
                                 <label for="numeroId" class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Numero Estudiantil</label>
-                                <input type="number" id="numeroId" required placeholder="123456" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
+                                <input type="number" id="numeroId" name="ID Estudiantil" required placeholder="123456" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
                             </div>
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Correo Universitario</label>
-                            <input type="email" id="email" required placeholder="pueblo_123456@students.pupr.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
+                            <input type="email" id="email" name="Email"required placeholder="pueblo_123456@students.pupr.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
                         </div>
                         <div>
                             <label for="mensaje" class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Mensaje</label>
-                            <textarea id="mensaje" rows="4" required placeholder="Cuéntanos sobre tus metas o intereses en el proyecto..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"></textarea>
+                            <textarea id="mensaje" name="Mensaje" rows="4" required placeholder="Cuéntanos sobre tus metas o intereses en el proyecto..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-gray-700 dark:bg-gray-900 text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"></textarea>
                         </div>
                         <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-all">Send Message</button>
                     </form>
@@ -329,14 +374,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Image Lightbox Modal Popup Container -->
-    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 cursor-pointer" onclick="closeModal()">
-        <div class="relative max-w-4xl max-h-[90vh]">
-            <span class="absolute -top-10 right-0 text-white text-3xl font-bold cursor-pointer hover:text-gray-300">×</span>
-            <img id="modalImage" src="" alt="Enlarged View" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-gray-400 py-12 border-t border-gray-800">
@@ -349,21 +386,20 @@
                 <div>
                     <h4 class="text-white font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#filosofia" class="hover:text-white transition-colors">Filosofía</a></li>
-                        <li><a href="#galeria" class="hover:text-white transition-colors">Galeria</a></li>
-                        <li><a href="#stats" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
-                        <li><a href="#admision" class="hover:text-white transition-colors">Admisión</a></li>
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="miembros.html" class="hover:text-white transition-colors">Conoce los Miembros</a></li>
+                        <li><a href="documentacion.html" class="hover:text-white transition-colors">Documentación y Guías</a></li>
+                        <li><a href="reglamento.html" class="hover:text-white transition-colors">Reglamentos</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-white font-semibold mb-4">Proyectos</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="todo">Todos</a></li>
-                        <li><a href="#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="actividad">Actividades</a></li>
-                        <li><a href="#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="practica">Practicas</a></li>
-                        <li><a href="#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="competencia">Competencias</a></li>
+                        <li><a href="index.html?filter=todo#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="todo">Todos</a></li>
+                        <li><a href="index.html?filter=actividad#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="actividad">Actividades</a></li>
+                        <li><a href="index.html?filter=practica#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="practica">Practicas</a></li>
+                        <li><a href="index.html?filter=competencia#galeria" class="footer-filter-link hover:text-white transition-colors" data-filter="competencia">Competencias</a></li>
                     </ul>
                 </div>
 
@@ -383,8 +419,10 @@
         </div>
     </footer>
 
-    <!-- Scripts for theme toggle and image popup modal -->
+    <!-- Scripts -->
+<!-- Scripts -->
     <script>
+
         // Theme toggler
         const themeToggle = document.getElementById('themeToggle');
         const themeToggleMobile = document.getElementById('themeToggleMobile');
@@ -409,7 +447,25 @@
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
+        document.addEventListener('click', (event) => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');    
+        const isClickInside = mobileMenu.contains(event.target) || mobileMenuBtn.contains(event.target);
+
+        if (isMenuOpen && !isClickInside) {
+            mobileMenu.classList.add('hidden');
+                }
+            });
+        document.addEventListener('scroll', (event) => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');    
+        const isClickInside = mobileMenu.contains(event.target) || mobileMenuBtn.contains(event.target);
+
+        if (isMenuOpen && !isClickInside) {
+            mobileMenu.classList.add('hidden');
+                }
+            });
         }
+
+        
 
         // --- Galeria Filtering ---
         const filterBtns = document.querySelectorAll('.filter-btn');
@@ -430,7 +486,7 @@
                 const filter = btn.getAttribute('data-filter');
 
                 galeriaItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
+                    if (filter === 'all' || filter === 'todo' || item.classList.contains(filter)) {
                         item.style.display = 'block';
                     } else {
                         item.style.display = 'none';
@@ -439,18 +495,24 @@
             });
         });
 
-        // --- Footer a Galeria Filtering ---
-        document.querySelectorAll('.footer-filter-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-             const filterValue = link.getAttribute('data-filter');
-        
-            const targetFilterBtn = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
-        
-            if (targetFilterBtn) {
-                targetFilterBtn.click();
-        }
-    });
-}); 
+        // --- Footer to Galeria Filtering ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Check if there is a 'filter' parameter in the URL (e.g., ?filter=robotica)
+            const urlParams = new URLSearchParams(window.location.search);
+            const filterValue = urlParams.get('filter');
+
+            if (filterValue) {
+                // 2. Find the corresponding filter button
+                const targetFilterBtn = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
+
+                if (targetFilterBtn) {
+                    // 3. Small timeout ensures the gallery elements are fully rendered before filtering
+                    setTimeout(() => {
+                        targetFilterBtn.click();
+                    }, 100);
+                }
+            }
+        });
 
         // --- Stats Counter Animation ---
         function animateValue(id, start, end, duration) {
@@ -483,19 +545,50 @@
             });
         }, { threshold: 0.5 });
 
-        observer.observe(statsSection);
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
 
-        // Image Lightbox Modal Functions
+        // --- Side Drawer Menu Script ---
+        const menuBtn = document.getElementById('menu-btn');
+        const closeSideMenu = document.getElementById('closeSideMenu');
+        const sideDrawer = document.getElementById('menudropdown');
+        const sideMenuBackdrop = document.getElementById('sideMenuBackdrop');
+        const sideLinks = document.querySelectorAll('#menudropdown a');
+
+        function openSideMenu() {
+            if (sideDrawer) sideDrawer.classList.remove('-translate-x-full');
+            if (sideMenuBackdrop) sideMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeSideMenuDrawer() {
+            if (sideDrawer) sideDrawer.classList.add('-translate-x-full');
+            if (sideMenuBackdrop) sideMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        if (menuBtn) menuBtn.addEventListener('click', openSideMenu);
+        if (closeSideMenu) closeSideMenu.addEventListener('click', closeSideMenuDrawer);
+        if (sideMenuBackdrop) sideMenuBackdrop.addEventListener('click', closeSideMenuDrawer);
+
+        sideLinks.forEach(link => {
+            link.addEventListener('click', closeSideMenuDrawer);
+        });
+
+        // --- Image Lightbox Modal Functions ---
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageSrc;
-            modal.classList.remove('hidden');
+            if (modal && modalImage) {
+                modalImage.src = imageSrc;
+                modal.classList.remove('hidden');
+            }
         }
 
         function closeModal() {
             const modal = document.getElementById('imageModal');
-            modal.classList.add('hidden');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
         }
     </script>
 </body>
